@@ -45,7 +45,7 @@ export const techIcons: Record<string, TechIcon> = {
   laravel: { slug: "laravel", label: "Laravel", color: "FF2D20", bgColor: "bg-red-50" },
 
   // Cloud/Infra
-  aws: { slug: "amazonwebservices", label: "AWS", color: "232F3E", bgColor: "bg-orange-50" },
+  aws: { slug: "amazonaws", label: "AWS", color: "FF9900", bgColor: "bg-orange-50" },
   gcp: { slug: "googlecloud", label: "GCP", color: "4285F4", bgColor: "bg-blue-50" },
   azure: { slug: "microsoftazure", label: "Azure", color: "0078D4", bgColor: "bg-blue-50" },
   vercel: { slug: "vercel", label: "Vercel", color: "000000", bgColor: "bg-gray-100" },

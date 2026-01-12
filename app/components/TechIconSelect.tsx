@@ -58,7 +58,6 @@ export function TechIconSelect({
       "laravel",
     ],
     "Cloud/Infra": [
-      "aws",
       "gcp",
       "azure",
       "vercel",
