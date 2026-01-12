@@ -3,6 +3,7 @@ import type { Route } from "./+types/admin";
 import { createPost } from "../lib/posts.server";
 import { Header } from "../components/Header";
 import { TechIconSelect } from "../components/TechIconSelect";
+import { isDevelopment } from "../lib/env";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "New Post - devdemdev" }];
@@ -10,7 +11,7 @@ export function meta({}: Route.MetaArgs) {
 
 export async function action({ request }: Route.ActionArgs) {
   // Only allow in development
-  if (process.env.NODE_ENV !== "development") {
+  if (!isDevelopment()) {
     throw new Response("Posting is not allowed in production", { status: 403 });
   }
 
@@ -41,7 +42,7 @@ export default function Admin({ actionData }: Route.ComponentProps) {
   const isSubmitting = navigation.state === "submitting";
 
   // Show warning in production
-  if (process.env.NODE_ENV !== "development") {
+  if (!isDevelopment()) {
     return (
       <div className="min-h-screen bg-[#FFFBEB]">
         <Header />

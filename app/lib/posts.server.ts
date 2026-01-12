@@ -1,5 +1,6 @@
 // Import posts data directly (works in both Node.js and browser)
 import postsData from "../../content/posts.json";
+import { isDevelopment, isServer } from "./env";
 
 export interface Post {
   id: string;
@@ -27,7 +28,7 @@ async function writePostsFile(posts: PostData[]): Promise<void> {
   postsCache = posts;
 
   // Write to file only in development (Node.js environment)
-  if (typeof window === "undefined" && process.env.NODE_ENV === "development") {
+  if (isServer() && isDevelopment()) {
     const fs = await import("node:fs/promises");
     const path = await import("node:path");
     const POSTS_FILE = path.join(process.cwd(), "content/posts.json");

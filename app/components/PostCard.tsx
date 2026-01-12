@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { getTechIcon, getIconUrl } from "../lib/icons";
 import type { Post } from "../lib/posts.server";
+import { isDevelopment } from "../lib/env";
 
 interface PostCardProps {
   post: Post;
@@ -54,7 +55,7 @@ export function PostCard({ post }: PostCardProps) {
             </div>
           </div>
         </div>
-        {process.env.NODE_ENV === "development" && (
+        {isDevelopment() && (
           <Link
             to={`/admin/edit/${post.id}`}
             className="text-xs text-slate-400 hover:text-orange-500 transition-colors flex items-center gap-1 opacity-0 group-hover:opacity-100"

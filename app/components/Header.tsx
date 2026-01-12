@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { isDevelopment } from "../lib/env";
 
 export function Header() {
   return (
@@ -28,7 +29,7 @@ export function Header() {
           </Link>
 
           {/* Navigation */}
-          {process.env.NODE_ENV === "development" && (
+          {isDevelopment() && (
             <Link
               to="/admin"
               className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors shadow-sm"

@@ -3,13 +3,14 @@ import type { Route } from "./+types/admin.edit.$id";
 import { getPost, updatePost, deletePost } from "../lib/posts.server";
 import { Header } from "../components/Header";
 import { TechIconSelect } from "../components/TechIconSelect";
+import { isDevelopment } from "../lib/env";
 
 export function meta({}: Route.MetaArgs) {
   return [{ title: "Edit Post - devdemdev" }];
 }
 
 export async function loader({ params }: Route.LoaderArgs) {
-  if (process.env.NODE_ENV !== "development") {
+  if (!isDevelopment()) {
     throw new Response("Editing is not allowed in production", { status: 403 });
   }
 
@@ -22,7 +23,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 export async function action({ request, params }: Route.ActionArgs) {
-  if (process.env.NODE_ENV !== "development") {
+  if (!isDevelopment()) {
     throw new Response("Editing is not allowed in production", { status: 403 });
   }
 
@@ -63,7 +64,7 @@ export default function EditPost({
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
-  if (process.env.NODE_ENV !== "development") {
+  if (!isDevelopment()) {
     return (
       <div className="min-h-screen bg-[#FFFBEB]">
         <Header />
