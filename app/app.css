@@ -3,13 +3,165 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Custom color palette */
+  --color-bg-main: #FFFBEB;
+  --color-bg-card: #ffffff;
+  --color-accent-blue: #ECF9FF;
+  --color-accent-orange: #FFE7CC;
+
+  /* Primary accent - Warm orange */
+  --color-primary: #f97316;
+  --color-primary-hover: #ea580c;
+
+  /* Border radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  background-color: #FFFBEB;
+  color: #1e293b;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+/* Modern button base styles */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 font-medium transition-all duration-200;
+  @apply rounded-xl px-4 py-2.5 text-sm;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-primary {
+  @apply bg-orange-500 text-white;
+  @apply hover:bg-orange-600 hover:shadow-md;
+  @apply focus:ring-orange-500;
+  @apply active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply bg-white text-slate-800 border border-slate-300;
+  @apply hover:bg-gray-50 hover:border-slate-400;
+  @apply focus:ring-slate-400;
+  @apply active:scale-[0.98];
+}
+
+.btn-danger {
+  @apply bg-red-500 text-white;
+  @apply hover:bg-red-600 hover:shadow-md;
+  @apply focus:ring-red-500;
+  @apply active:scale-[0.98];
+}
+
+.btn-ghost {
+  @apply bg-transparent text-slate-600;
+  @apply hover:bg-gray-100 hover:text-slate-800;
+  @apply focus:ring-slate-400;
+}
+
+/* Modern input styles */
+.input {
+  @apply w-full px-4 py-3 text-sm;
+  @apply bg-white border border-slate-300 rounded-xl;
+  @apply text-slate-800 placeholder-slate-400;
+  @apply transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-0 focus:border-orange-500;
+  @apply hover:border-slate-400;
+}
+
+.input:disabled {
+  @apply bg-gray-50 cursor-not-allowed;
+}
+
+/* Modern card styles */
+.card {
+  @apply bg-white rounded-2xl;
+  @apply border border-slate-200;
+  @apply shadow-sm;
+  @apply transition-all duration-200;
+}
+
+.card-hover {
+  @apply hover:shadow-md hover:border-slate-300;
+}
+
+/* Custom dropdown styles */
+.dropdown-menu {
+  @apply absolute z-50 mt-2 w-full max-h-72 overflow-auto;
+  @apply bg-white rounded-xl border border-slate-200;
+  @apply shadow-lg;
+  animation: dropdown-enter 0.15s ease-out;
+}
+
+@keyframes dropdown-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-item {
+  @apply flex items-center gap-3 px-4 py-3 text-sm cursor-pointer;
+  @apply text-slate-800;
+  @apply transition-colors duration-150;
+}
+
+.dropdown-item:hover {
+  @apply bg-orange-50;
+}
+
+.dropdown-item.selected {
+  @apply bg-orange-100 text-orange-600;
+}
+
+/* Badge styles */
+.badge {
+  @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-lg;
+}
+
+/* Smooth page transitions */
+.page-enter {
+  animation: page-fade-in 0.2s ease-out;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
 }
